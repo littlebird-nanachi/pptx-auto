@@ -1,0 +1,35 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #eee; }
+.slide { position: relative; width: var(--slide-width); height: var(--slide-height); background: var(--background); color: var(--ink); font-family: var(--font); padding: var(--margin-y) var(--margin-x); }
+.slide-logo { position: absolute; top: var(--logo-top); right: var(--logo-right); height: var(--logo-height); width: auto; object-fit: contain; }
+.slide-heading { width: calc(var(--slide-width) - var(--margin-x) - max(var(--margin-x), var(--logo-right)) - var(--logo-safe-area)); }
+h1 { margin: 0; font-size: var(--title-size); line-height: 1.35; overflow-wrap: anywhere; }
+.lead { margin: 28px 0 0; font-size: var(--lead-size); line-height: 1.55; color: var(--muted); overflow-wrap: anywhere; }
+.main-content { margin-top: 56px; padding-top: 0; }
+h2 { font-size: 38px; line-height: 1.4; margin: 0 0 24px; color: var(--accent); }
+p, li { font-size: var(--body-size); line-height: 1.65; overflow-wrap: anywhere; }
+ul { padding-left: 1.3em; margin: 0; }
+li + li { margin-top: 24px; }
+.columns { display: grid; gap: 48px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cards { display: grid; gap: 40px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.panel { border-top: 5px solid var(--accent); padding-top: 28px; }
+.cover-subtitle { font-size: 48px; line-height: 1.6; max-width: 1300px; margin-top: 96px; }
+.footer { position: absolute; bottom: 36px; left: var(--margin-x); right: var(--margin-x); display: flex; justify-content: space-between; gap: 32px; border-top: 1px solid #ccd7dd; padding-top: 18px; color: var(--muted); font-size: 18px; }
+.footer-label { max-width: 85%; overflow-wrap: anywhere; }
+.role-split { margin-top: 28px; }
+.role-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 12px; line-height: 1.16; }
+.role-table th { background: #29343b; color: #fff; font-size: 13px; padding: 5px 7px; text-align: center; }
+.role-table th:first-child { width: 11%; }
+.role-table th:nth-child(2) { width: 22%; text-align: left; }
+.role-table th:nth-child(3), .role-table th:nth-child(4), .role-table th:nth-child(5) { width: 6%; }
+.role-table th:last-child { width: 49%; text-align: left; }
+.role-table td { border: 1px solid #c8d0d5; padding: 3px 6px; vertical-align: middle; overflow-wrap: anywhere; }
+.role-table tr:nth-child(even) td { background: #f7f8f9; }
+.role-table .section-cell { background: #f1dede; color: #8e1820; font-weight: 700; text-align: center; font-size: 14px; }
+.role-table .symbol { text-align: center; font-size: 18px; font-weight: 700; }
+.role-table .human-gate { background: #fff0f0; color: #b21f2d; }
+.role-key { margin-top: 9px; background: #a51e2a; color: white; padding: 8px 14px 7px; border-radius: 5px; font-size: 18px; line-height: 1.3; font-weight: 700; }
+.layout-role_split { padding-top: 54px; }
+.layout-role_split h1 { font-size: 40px; line-height: 1.2; }
+.layout-role_split .lead { font-size: 21px; line-height: 1.4; margin-top: 12px; }
+.role-note { margin: 5px 0 0; color: #4e5960; font-size: 12px; line-height: 1.2; }

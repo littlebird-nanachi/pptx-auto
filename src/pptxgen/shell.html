@@ -1,0 +1,7 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><title>{{ slide.title }}</title><style>{{ css | safe }}</style></head>
+<body><article class="slide layout-{{ slide.layout }}" data-slide="{{ slide.slide_number }}">
+<header class="common-header"><img class="slide-logo" src="{{ logo.uri }}" alt="Company logo"></header>
+<div class="slide-heading"><h1>{{ slide.title }}</h1>{% if slide.lead %}<p class="lead">{{ slide.lead }}</p>{% endif %}</div>
+<main class="main-content">{% include layout_template %}</main>
+{% if slide.show_footer is not defined or slide.show_footer %}<footer class="footer"><span class="footer-label">{{ footer }}</span><span>{{ slide.slide_number }} / {{ total }}</span></footer>{% endif %}
+</article></body></html>

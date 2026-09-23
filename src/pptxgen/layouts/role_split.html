@@ -1,0 +1,9 @@
+<div class="role-split">
+<table class="role-table"><thead><tr><th>セクション</th><th>主な処理</th><th>AI</th><th>ルール</th><th>人</th><th>役割・考え方</th></tr></thead><tbody>
+{% for section in slide.sections %}{% for row in section.rows %}<tr>
+{% if loop.first %}<td class="section-cell" rowspan="{{ section.rows|length }}">{{ section.name }}</td>{% endif %}
+<td>{{ row.process }}</td><td class="symbol">{{ row.ai }}</td><td class="symbol">{{ row.rule }}</td><td class="symbol {% if row.human == '●' %}human-gate{% endif %}">{{ row.human }}</td><td>{{ row.rationale }}</td>
+</tr>{% endfor %}{% endfor %}
+</tbody></table>
+<div class="role-key">{{ slide.key_message }}</div><p class="role-note">{{ slide.key_note }}</p>
+</div>

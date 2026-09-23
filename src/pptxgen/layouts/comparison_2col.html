@@ -1,0 +1,1 @@
+<div class="columns">{% for column in [slide.left, slide.right] %}<section class="panel"><h2>{{ column.heading }}</h2><ul>{% for item in column['items'] %}<li>{{ item }}</li>{% endfor %}</ul></section>{% endfor %}</div>

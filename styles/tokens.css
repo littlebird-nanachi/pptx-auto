@@ -1,0 +1,20 @@
+:root {
+  --slide-width: 1920px;
+  --slide-height: 1080px;
+  --margin-x: 96px;
+  --margin-y: 64px;
+  --logo-top: 40px;
+  --logo-right: 64px;
+  --logo-height: 48px;
+  --logo-gap: 32px;
+  --title-size: 54px;
+  --lead-size: 32px;
+  --body-size: 30px;
+  --minimum-font-size: 12px;
+  --accent: #008db0;
+  --ink: #172b38;
+  --muted: #536573;
+  --background: #fff;
+  --radius: 12px;
+  --font: "Hiragino Sans", "Noto Sans CJK JP", sans-serif;
+}

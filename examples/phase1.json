@@ -1,0 +1,12 @@
+{
+  "presentation": {"title": "PPTX自動生成基盤", "audience": "企画・提案資料の作成担当者", "purpose": "共通ロゴ配置と生成フローの検証"},
+  "slides": [
+    {"slide_number": 1, "layout": "title", "title": "PPTX自動生成基盤", "lead": "デザイン品質と再現性を支える共通テンプレート", "subtitle": "構造化した情報から、統一された提案資料へ"},
+    {"slide_number": 2, "layout": "comparison_2col", "title": "コンテンツとデザインの役割分担", "lead": "各Layoutは本文を担当し、共通Shellがブランド表現を統一する", "left": {"heading": "Layout", "items": ["比較・カードなどの本文構造を定義", "JSONで受け取った情報を配置", "個別のロゴ記述は不要"]}, "right": {"heading": "共通Slide Shell", "items": ["右上ロゴとSafe Areaを管理", "タイトル・リードの位置を統一", "共通フッターとページ番号を表示"]}},
+    {"slide_number": 3, "layout": "cards_3col", "title": "生成前の品質チェック", "lead": "問題を検出した場合はQAレポートを出力し、修正後に再生成する", "cards": [
+      {"heading": "ロゴ", "items": ["画像の読み込みを確認", "位置と縦横比を検証"]},
+      {"heading": "コンテンツ", "items": ["ロゴとの重なりを検出", "文字や要素のはみ出しを検出"]},
+      {"heading": "出力", "items": ["PNGの寸法を検証", "PPTXのページ数を検証"]}
+    ]}
+  ]
+}
