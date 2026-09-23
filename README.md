@@ -58,8 +58,8 @@ preview.html を人がレビュー
 ## 共通ロゴ
 
 `src/pptxgen/shell.html` だけがロゴを描画します。各Layoutは本文のみを持ちます。
-優先順位は `themes/<theme>/logo.png` → `assets/logo.png`。
-Themeロゴが欠損ならFallback、破損・読み込み失敗ならエラー。画像をHTMLに埋め込むため出力の移動でもリンク切れしません。
+優先順位は `themes/<theme>/logo.png` → `assets/logo.png`。ロゴを使う場合は、いずれかの場所にPNGを配置してください。
+Themeロゴが欠損ならFallback、両方とも欠損または破損・読み込み失敗ならエラー。画像をHTMLに埋め込むため出力の移動でもリンク切れしません。
 
 `styles/tokens.css` の既定値: `--logo-top:40px`、`--logo-right:64px`、`--logo-height:48px`。
 幅は `auto`、Safe Areaは実画像の縦横比と高さから計算し、32pxの余白を加えます。
