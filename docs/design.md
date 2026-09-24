@@ -1,6 +1,6 @@
 # Phase 1 設計
 
-既存リポジトリは `logo.png` のみ。既存画像を保持し `assets/logo.png` にコピーする。
+ロゴは案件やテーマごとに用意し、`themes/<theme>/logo.png` または `assets/logo.png` に配置する。
 
 ## 技術・構成
 Python 3.12+ / Jinja2 (自動エスケープ) / JSON Schema / Playwright Chromium / Pillow / python-pptx。
@@ -15,7 +15,6 @@ LLMはPhase 3で追加する。Phase 1ではJSONを入力とし、架空のAI生
 - `src/pptxgen/qa.js`: Chromium内での幾何学検査
 - `src/pptxgen/pipeline.py`: PNGとPPTX生成、QAレポート
 - `styles/`: 共通Design Tokensとレイアウト
-- `examples/phase1.json`: 3枚の検証用入力
 
 ## JSON Schema
 presentation: title, audience, purpose / slides: slide_number, layout, title, lead。
@@ -33,7 +32,7 @@ Theme選択は安全なディレクトリ名のみ。`themes/<theme>/logo.png` �
 2. ChromiumによるQAとPNG生成
 3. 全面PNGのPPTX生成、プレビューHTML
 4. 長いタイトル、Theme優先/Fallback、壊れた/欠損ロゴ、重なり、16:9/4:3をテスト
-5. サンプル3枚を実際に生成・目視検証
+5. 汎用入力データを使って複数レイアウトを実際に生成・目視検証
 
 Phase 2: Layout追加 / Phase 3: Planner・LLM / Phase 4: 自動修正・再試行 / Phase 5: Preview編集UI。
 現段階では内容を自動で削ったり縮小せず、QA指摘を受けてJSONやThemeを修正して再実行する。

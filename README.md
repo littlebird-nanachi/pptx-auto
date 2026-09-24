@@ -16,7 +16,7 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 .venv/bin/playwright install chromium
 # 1. HTML/PNG/プレビューを生成（この段階ではPPTXを作らない）
-PYTHONPATH=src .venv/bin/python -m pptxgen --input examples/phase1.json --output output --ratio 4:3
+PYTHONPATH=src .venv/bin/python -m pptxgen --input path/to/input.json --output output --ratio 4:3
 
 # 2. output/preview.html を人が確認し、承認後に実行
 PYTHONPATH=src .venv/bin/python -m pptxgen --output output --approve
@@ -32,7 +32,7 @@ QA通過後も人の承認までは `presentation.pptx` を生成しません。
 
 基本的には、次のサイクルで1枚ずつ内容と見た目を固めます。
 
-1. `examples/phase1.json` をコピーし、ページの文章・データ・使用する `layout` を定義する。
+1. 入力JSONを用意し、ページの文章・データ・使用する `layout` を定義する。
 2. 生成コマンドを実行し、`output/preview.html` と生成されたPNGを確認する。
 3. 文章の長さ、余白、整列、ロゴ位置、ページ間の統一感を人がレビューする。
 4. 修正があれば JSON、レイアウトHTML、CSS、テーマのいずれかを直して再生成する。

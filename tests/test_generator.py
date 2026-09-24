@@ -10,7 +10,14 @@ from pptxgen.schemas import validate
 from pptxgen.renderer import render_html, ROOT
 from pptxgen.pipeline import generate, launch_browser, inspect_page
 
-DATA = json.loads((ROOT/'examples/phase1.json').read_text())
+DATA = {
+    "presentation": {"title": "Sample presentation", "audience": "Reviewers", "purpose": "Template validation"},
+    "slides": [
+        {"slide_number": 1, "layout": "title", "title": "Sample title", "lead": "A reusable presentation template", "subtitle": "Generated from structured input"},
+        {"slide_number": 2, "layout": "comparison_2col", "title": "Two-column comparison", "lead": "Compare two groups of information", "left": {"heading": "Left", "items": ["First point", "Second point", "Third point"]}, "right": {"heading": "Right", "items": ["Another point", "More detail", "Final point"]}},
+        {"slide_number": 3, "layout": "cards_3col", "title": "Quality checks", "lead": "Validate the output before packaging", "cards": [{"heading": "Input", "items": ["Structured data", "Defined layout"]}, {"heading": "Review", "items": ["Visual inspection", "QA report"]}, {"heading": "Output", "items": ["PNG preview", "PPTX package"]}]}
+    ]
+}
 
 class ThemeTests(unittest.TestCase):
     def test_fallback_override_corrupt_missing(self):
@@ -35,7 +42,8 @@ class ThemeTests(unittest.TestCase):
 
     def test_missing_logo_report_and_no_output(self):
         with tempfile.TemporaryDirectory() as d:
-            report=generate(ROOT/'examples/phase1.json',Path(d)/'out',root=Path(d))
+            inp=Path(d)/'input.json'; inp.write_text(json.dumps(DATA))
+            report=generate(inp,Path(d)/'out',root=Path(d))
             self.assertFalse(report['generated'])
             self.assertIn('LOGO_LOAD_ERROR',report['issues'][0]['detail'])
             self.assertTrue((Path(d)/'out/qa_report.json').exists())
@@ -46,11 +54,14 @@ class BrowserTests(unittest.TestCase):
     def setUpClass(cls):
         cls.pw=sync_playwright().start()
         cls.browser=launch_browser(cls.pw)
-        cls.logo, cls.theme=load_theme(ROOT,'default')
+        cls.logo_root=tempfile.TemporaryDirectory()
+        logo_dir=Path(cls.logo_root.name)/'assets'; logo_dir.mkdir()
+        Image.new('RGB',(200,50)).save(logo_dir/'logo.png')
+        cls.logo, cls.theme=load_theme(Path(cls.logo_root.name),'default')
 
     @classmethod
     def tearDownClass(cls):
-        cls.browser.close(); cls.pw.stop()
+        cls.browser.close(); cls.pw.stop(); cls.logo_root.cleanup()
 
     def render(self,slide,width=1920,logo=None):
         page=self.browser.new_page(viewport={'width':width,'height':1080})
